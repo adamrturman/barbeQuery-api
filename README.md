@@ -105,9 +105,5 @@ messaging, hiding unimportant elements, and modals.
 
 ## Images
 
-#### Wireframe:
-![Wireframe](https://i.imgur.com/XbjznmA.jpg)
----
-
 #### ERD:
 ![ERD](https://i.imgur.com/2hVqBLP.jpg)
