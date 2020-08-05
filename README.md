@@ -7,7 +7,7 @@ your own if you find a better variation!
 
 ## Important Links
 
-- [Other Repo](www.link.com)
+- [Other Repo](https://github.com/adamrturman/barbeQuery-client)
 - [Deployed API](www.link.com)
 - [Deployed Client](www.link.com)
 
