@@ -1,7 +1,7 @@
 # barbeQuery API
 
-This application allows the user to do x, y, and z. Maybe here's a reason why I
-wanted to do this project, or came up with this idea.
+This is the API for barbeQuery - a modifiable recipe book for smoking and
+grilling meat.
 
 ## Important Links
 
@@ -9,43 +9,102 @@ wanted to do this project, or came up with this idea.
 - [Deployed API](www.link.com)
 - [Deployed Client](www.link.com)
 
-## Planning Story
+## Resources
 
-Lorem ipsum dolor amet cloud bread letterpress squid actually, single-origin
-coffee williamsburg af poutine fingerstache austin semiotics paleo man braid
-vexillologist. Tumeric literally banjo pickled disrupt cold-pressed thundercats
-shoreditch try-hard health goth intelligentsia pop-up small batch skateboard
-farm-to-table. Meh tofu fam, direct trade tattooed stumptown etsy everyday
-carry activated charcoal. Neutra cornhole polaroid literally salvia, listicle
-tofu.
-
+User Schema
+```js
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  hashedPassword: {
+    type: String,
+    required: true
+  },
+  token: String
+}, {
+  timestamps: true,
+  toObject: {
+    // remove `hashedPassword` field when we call `.toObject`
+    transform: (_doc, user) => {
+      delete user.hashedPassword
+      return user
+    }
+  }
+})
+```
+Recipe Schema
+```js
+const recipeSchema = new mongoose.Schema({
+  ingredient: {
+    type: String,
+    required: true
+  },
+  temperature: {
+    type: Number,
+    required: true,
+    min: 180,
+    max: 350
+  },
+  time: {
+    type: Number,
+    required: true,
+    min: 2,
+    max: 24
+  },
+  fuel: {
+    type: String,
+    required: true
+  },
+  directions: {
+    type: String,
+    required: true
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
+}, {
+  timestamps: true
+})
+```
 ### User Stories
 
-- As a user I want to sign in/up
-- As a user I want to Create a new < resource >
-- As a user I want to Read multiple < resources >
-- As a user I want to Read a single < resource >
-- As a user I want to Update a < resource > I own
-- As a user I want to Delete a < resource > I own
+* As a first-time user, I want to be able to create an account with a unique
+email and password.
+* As a returning user, I want to be able to log into my account with my
+credentials.
+* As a logged in user, I want to be able to change my password.
+* As a logged in user, I want to be able to log out of my account.
+* As a logged in user, I want to be able to create a new entry with ingredient,
+temperature, time, wood, and directions.
+* As a logged in user, I want to be able to find all the recipes.
+* As a logged in user, I want to be able to modify an existing recipe.
+* As a logged in user, I want to be able to delete an existing recipe.
+* As a logged in user, I want the UI to guide me through the steps with
+messaging, hiding unimportant elements, and modals.
 
 ### Technologies Used
 
-- jQuery
-- HTML/CSS
-- Bootstrap
-- Javascript
+- Express
+- Mongoose
+- MongoDB
+
 
 ### Unsolved Problems
 
-- Still need to ....
-- Would like to eventually ....
+- Search individual recipes by name
+- Add commentary to user's own recipes
+- Add commentary to other user's recipes
 
 ## Images
 
 #### Wireframe:
-![wireframe](https://lucidchart.zendesk.com/hc/article_attachments/360001080866/Facebook_Wireframe_-_New_Page.png)
-
+![Wireframe](https://i.imgur.com/XbjznmA.jpg)
 ---
 
 #### ERD:
-![ERD](https://www.smartdraw.com/entity-relationship-diagram/img/cardinality.jpg?bn=1510011144)
+![ERD](https://imgur.com/2hVqBLP)
