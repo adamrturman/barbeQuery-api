@@ -1,7 +1,9 @@
 # barbeQuery API
 
 This is the API for barbeQuery - a modifiable recipe book for smoking and
-grilling meat.
+grilling meat. Create recipes that include the time and temperature of the cook,
+as well as the fuel source and instructions. View existing recipes and modify
+your own if you find a better variation!
 
 ## Important Links
 
@@ -27,7 +29,6 @@ const userSchema = new mongoose.Schema({
 }, {
   timestamps: true,
   toObject: {
-    // remove `hashedPassword` field when we call `.toObject`
     transform: (_doc, user) => {
       delete user.hashedPassword
       return user
@@ -94,9 +95,11 @@ messaging, hiding unimportant elements, and modals.
 - MongoDB
 
 
-### Unsolved Problems
+### Unsolved Problems/Strech Goals
 
 - Search individual recipes by name
+- Search recipes by portion of name (searching "beef" could return "beef
+-   brisket", and "beef ribs")
 - Add commentary to user's own recipes
 - Add commentary to other user's recipes
 
@@ -107,4 +110,4 @@ messaging, hiding unimportant elements, and modals.
 ---
 
 #### ERD:
-![ERD](https://imgur.com/2hVqBLP)
+![ERD](https://i.imgur.com/2hVqBLP.jpg)
