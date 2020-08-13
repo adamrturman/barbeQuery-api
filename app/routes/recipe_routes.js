@@ -29,8 +29,10 @@ const router = express.Router()
 
 // INDEX
 // GET /examples
+//  Let's rework this to show only the user's resources
 router.get('/recipes', requireToken, (req, res, next) => {
-  Recipe.find()
+  const owner = req.user._id
+  Recipe.find({ owner: owner })
     .then(recipes => {
       // `examples` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
