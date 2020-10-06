@@ -11,6 +11,13 @@ your own if you find a better variation!
 - [Deployed API](https://nameless-anchorage-32520.herokuapp.com)
 - [Deployed Client](https://adamrturman.github.io/barbeQuery-client/)
 
+## Set Up Instructions
+- Fork and clone this repository.
+- Once inside the directory, install dependencies with `npm install`
+- Be sure `nodemon` is not included in the package.json, install it with `npm install -g nodemon`.
+- Start the server with `npm run server`.
+- Test user authentication and recipe CRUD actions with `npm test`.
+
 ## Resources
 
 User Schema

@@ -13,17 +13,14 @@ const recipeSchema = new mongoose.Schema({
   },
   time: {
     type: Number,
-    required: true,
     min: 2,
     max: 24
   },
   fuel: {
-    type: String,
-    required: true
+    type: String
   },
   directions: {
-    type: String,
-    required: true
+    type: String
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
